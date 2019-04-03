@@ -7,26 +7,31 @@ import (
 func Test_allSorts(t *testing.T) {
 
 	type sortFunc func([]int) []int
-	var (
-		in   = []int{2, 12, 1, 9, 5}
-		want = []int{1, 2, 5, 9, 12}
-	)
+	want := []int{1, 2, 5, 9, 12}
 	testCases := []struct {
 		name string
+		in   []int
 		fn   sortFunc
 	}{
 		{
 			name: "quicksort",
+			in:   []int{2, 12, 1, 9, 5},
 			fn:   quicksort,
 		},
 		{
 			name: "mergesort",
+			in:   []int{2, 12, 1, 9, 5},
 			fn:   mergesort,
+		},
+		{
+			name: "bubblesort",
+			in:   []int{2, 12, 1, 9, 5},
+			fn:   bubblesort,
 		},
 	}
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			if got := tc.fn(in); !sliceEqual(got, want) {
+			if got := tc.fn(tc.in); !sliceEqual(got, want) {
 				t.Errorf("wanted %v, got %v", want, got)
 			}
 		})

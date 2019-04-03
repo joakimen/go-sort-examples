@@ -1,5 +1,20 @@
 package sort
 
+func bubblesort(a []int) []int {
+
+	swapped := true
+	for swapped {
+		swapped = false
+		for i := 0; i < len(a)-1; i++ {
+			if a[i] > a[i+1] {
+				a[i], a[i+1] = a[i+1], a[i]
+				swapped = true
+			}
+		}
+	}
+	return a
+}
+
 func quicksort(a []int) []int {
 
 	l, r := 0, len(a)-1
