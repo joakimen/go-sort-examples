@@ -28,6 +28,11 @@ func Test_allSorts(t *testing.T) {
 			in:   []int{2, 12, 1, 9, 5},
 			fn:   bubblesort,
 		},
+		{
+			name: "insertionsort",
+			in:   []int{2, 12, 1, 9, 5},
+			fn:   insertionsort,
+		},
 	}
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
